@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            To-Do
+        </title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+
+<body>
+
+    <div class="container">
+    <h1 class="h1"> To-Do</h1>
+      <div class="d1">
+
+
+        <p class="data">
+        <label>
+            <h1 id="task">Task</h1> 
+        </label>
+        <input id="ipt" type="text" placeholder="Enter your task to do">
+        <button id="b1" onclick="btn()"> Add</button>
+        </p>
+        
+
+        <div class="d2">
+
+            <ol id="ul-list"></ol>
+
+        </div>
+
+
+       </div>
+    </div>
+
+    
+
+    <script>
+         function btn(){
+            const inp=document.getElementById("ipt");
+            if(inp.value==""){
+                alert("Please enter a task");
+            }
+
+            else{
+            const ol=document.getElementById("ul-list");
+
+            const li=document.createElement('li');
+
+
+            //h2 content task
+            const h=document.createElement('h2');
+            h.textContent=inp.value;
+            h.className="h"
+
+            //edit button
+            const edit=document.createElement('button');
+            edit.textContent="Edit";
+            edit.className="b2"
+
+            edit.addEventListener('click',function(){
+                newtask=prompt("Edit for new task: ",h.textContent);
+                if(newtask){
+                    h.textContent=newtask;
+                }
+            });
+
+
+            //delete button
+            const del=document.createElement('button');
+            del.textContent="Delete"
+            del.className="b2";
+            del.addEventListener('click',function(){
+                li.remove();
+            });
+
+            //appending
+            li.appendChild(h);
+            li.appendChild(edit);
+            li.appendChild(del);
+            // console.log()
+
+            ol.appendChild(li);
+            inp.value="";
+        }
+    }
+    </script>
+
+
+
+</body>
+</html>
